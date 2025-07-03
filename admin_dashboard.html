@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Intanational Shops</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f9fafb;
+    }
+    header {
+      background-color: #1f2937;
+      color: white;
+      padding: 1rem;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+    .admin-container {
+      padding: 1rem;
+    }
+    .admin-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .admin-nav button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .admin-tab {
+      display: none;
+    }
+    .admin-tab.active {
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #3b82f6;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>Admin Dashboard - Intanational Shops</header>
+  <div class="admin-container">
+    <div class="admin-nav">
+      <button onclick="switchAdminTab('withdrawRequests')">Withdraw Requests</button>
+      <button onclick="switchAdminTab('userTasks')">User Tasks</button>
+      <button onclick="switchAdminTab('transactions')">Transactions</button>
+      <button onclick="switchAdminTab('users')">Users</button>
+    </div>
+    <div id="withdrawRequests" class="admin-tab active">
+      <h3>Withdraw Requests</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Amount</th>
+            <th>Account</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>user1</td>
+            <td>₦500</td>
+            <td>1234567890 (GTB)</td>
+            <td>
+              <button>Approve</button>
+              <button>Reject</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="userTasks" class="admin-tab">
+      <h3>User Submitted Tasks</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Task</th>
+            <th>Proof</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>user2</td>
+            <td>Follow @page</td>
+            <td><a href="#">View</a></td>
+            <td>
+              <button>Approve</button>
+              <button>Reject</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="transactions" class="admin-tab">
+      <h3>Transaction History</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>user3</td>
+            <td>Withdraw</td>
+            <td>₦1000</td>
+            <td>2025-06-15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="users" class="admin-tab">
+      <h3>Registered Users</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>user1</td>
+            <td>user1@example.com</td>
+            <td>Active</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    function switchAdminTab(tabId) {
+      const tabs = document.querySelectorAll('.admin-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
