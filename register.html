@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - Intanational Shops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+    h2 {
+      color: #3b82f6;
+    }
+    input {
+      display: block;
+      width: 90%;
+      max-width: 400px;
+      margin: 0.8rem auto;
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      background: #3b82f6;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #2563eb;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Create an Account</h2>
+  <div id="step1">
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="email" id="email" placeholder="Email Address" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button class="btn" onclick="sendOTP()">Send OTP</button>
+  </div>
+
+  <div id="step2" class="hidden">
+    <h3>Enter OTP sent to your email</h3>
+    <input type="text" id="otpInput" placeholder="Enter OTP" />
+    <button class="btn" onclick="verifyOTP()">Verify & Register</button>
+  </div>
+
+  <script>
+    let generatedOTP = "";
+
+    function sendOTP() {
+      const email = document.getElementById("email").value;
+      if (!email.includes("@")) {
+        alert("Please enter a valid email.");
+        return;
+      }
+
+      generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+      alert("OTP sent to email: " + generatedOTP);
+
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
+
+    function verifyOTP() {
+      const otpInput = document.getElementById("otpInput").value;
+      if (otpInput === generatedOTP) {
+        alert("Registration successful! Redirecting to dashboard...");
+        window.location.href = "user_dashboard.html";
+      } else {
+        alert("Invalid OTP. Try again.");
+      }
+    }
+  </script>
+
+</body>
+</html>
